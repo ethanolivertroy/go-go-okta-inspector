@@ -33,6 +33,3 @@ okta_audit_results_*
 
 # Log files
 *.log
-
-# Claude guidance file
-CLAUDE.md
