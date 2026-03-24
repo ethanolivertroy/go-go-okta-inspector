@@ -1,0 +1,62 @@
+version: 2
+
+project_name: go-go-okta-inspector
+
+builds:
+  - main: .
+    binary: go-go-okta-inspector
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+      - -X 'github.com/ethanolivertroy/go-go-okta-inspector/internal/version.Version={{.Version}}'
+      - -X 'github.com/ethanolivertroy/go-go-okta-inspector/internal/version.Commit={{.Commit}}'
+      - -X 'github.com/ethanolivertroy/go-go-okta-inspector/internal/version.Date={{.Date}}'
+
+archives:
+  - format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+      - goos: windows
+        format: zip
+
+checksum:
+  name_template: 'checksums.txt'
+
+sboms:
+  - artifacts: archive
+
+changelog:
+  sort: asc
+  groups:
+    - title: "New Features"
+      regexp: '^.*?feat(\([[:word:]]+\))??!?:.+$'
+      order: 0
+    - title: "Security"
+      regexp: '^.*?sec(\([[:word:]]+\))??!?:.+$'
+      order: 1
+    - title: "Bug Fixes"
+      regexp: '^.*?(fix|bugfix)(\([[:word:]]+\))??!?:.+$'
+      order: 2
+    - title: "Other"
+      order: 999
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^ci:'
+      - '^chore:'
+
+release:
+  github:
+    owner: ethanolivertroy
+    name: go-go-okta-inspector
+  prerelease: auto
+  name_template: "v{{.Version}}"
