@@ -1,3 +1,5 @@
+![Go Go Okta Inspector](banner.jpg)
+
 # Go Go Okta Inspector
 
 A multi-framework compliance audit tool for Okta, written in Go. Single binary, zero dependencies, runs anywhere.
