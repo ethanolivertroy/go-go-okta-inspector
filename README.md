@@ -2,6 +2,8 @@
 
 # Go Go Okta Inspector
 
+> **Project moved.** The Go inspector moved to [Open Control Tools](https://github.com/ethanolivertroy/open-ctrl-tools) under `go-go-okta-inspector/`. To install the frozen standalone version, use the [pinned Go install command](#frozen-standalone-version) below.
+
 A multi-framework compliance audit tool for Okta, written in Go. Single binary, zero dependencies, runs anywhere.
 
 > *"Go Go Gadget... compliance audit!"*
@@ -17,38 +19,19 @@ A multi-framework compliance audit tool for Okta, written in Go. Single binary, 
 
 ## Install
 
-### Download a release binary
+### Frozen standalone version
 
-Grab the latest binary for your platform from [Releases](https://github.com/ethanolivertroy/go-go-okta-inspector/releases).
+With Go 1.24.2 or later, install the last standalone code revision using its exact module version.
 
-```bash
-# Linux (amd64)
-curl -Lo go-go-okta-inspector https://github.com/ethanolivertroy/go-go-okta-inspector/releases/latest/download/go-go-okta-inspector_linux_amd64
-chmod +x go-go-okta-inspector
-
-# macOS (Apple Silicon)
-curl -Lo go-go-okta-inspector https://github.com/ethanolivertroy/go-go-okta-inspector/releases/latest/download/go-go-okta-inspector_darwin_arm64
-chmod +x go-go-okta-inspector
+```sh
+go install github.com/ethanolivertroy/go-go-okta-inspector@v0.0.0-20260324034249-01da00161893
 ```
 
-### Cloud Shell (AWS, GCP, Azure)
+### Build the monorepo version
 
-```bash
-curl -Lo go-go-okta-inspector https://github.com/ethanolivertroy/go-go-okta-inspector/releases/latest/download/go-go-okta-inspector_linux_amd64
-chmod +x go-go-okta-inspector
-./go-go-okta-inspector audit -d your-org.okta.com -t $OKTA_API_TOKEN
-```
+From the root of an Open Control Tools checkout, run the following command.
 
-### Build from source
-
-```bash
-go install github.com/ethanolivertroy/go-go-okta-inspector@latest
-```
-
-Or clone and build:
-
-```bash
-git clone https://github.com/ethanolivertroy/go-go-okta-inspector.git
+```sh
 cd go-go-okta-inspector
 make build
 ```
